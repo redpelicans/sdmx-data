@@ -1,0 +1,77 @@
+{
+  "name": "sdmx-data",
+  "version": "0.0.1",
+  "author": "redpelicans",
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=test jest",
+    "lint": "eslint src --color",
+    "start": "NODE_ENV=development DEBUG=sdmx* nodemon --watch config --watch src --exec \"babel-node src\"",
+    "build": "NODE_ENV=production babel src --out-dir dist/",
+    "run": "NODE_ENV=production DEBUG=sdmx* node dist/cluster",
+    "load:data": "NODE_ENV=development DEBUG=matcha* babel-node ./scripts/load_data"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
+    "debug": "^3.0.1",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.3.0",
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31",
+    "morgan": "^1.8.2",
+    "morgan-debug": "^2.0.0",
+    "nodemon": "^1.12.0",
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {
+    "jest": "^21.0.1"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__test__/**/*.js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx"
+    ]
+  },
+
+  "babel": {
+    "presets": [
+      [
+        "latest",
+        {
+          "modules": false
+        }
+      ],
+      "stage-0"
+    ]
+  }
+}
